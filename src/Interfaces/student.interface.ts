@@ -6,3 +6,4 @@ export interface IStudent extends Document {
   readonly lastName: string;
   readonly role: string;
 }
+
