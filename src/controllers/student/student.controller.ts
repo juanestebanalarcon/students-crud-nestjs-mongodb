@@ -12,12 +12,15 @@ import {
 import { StudentService } from 'src/services/student/student.service';
 import { CreateStudentDto } from '../../Dtos/create-student.dto';
 import { UpdateStudentDto } from '../../Dtos/update-student.dto';
+import { ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger';
 
 /* eslint-disable prettier/prettier */
+@ApiTags("Students")
 @Controller('student')
 export class StudentController {
     constructor(private readonly studentService: StudentService) {}
     
+    @ApiResponse({status: 200,description:'Student has been successfully created.'})
     @Post('/new-student')
     async createStudent(@Res() response, @Body() createStudentDTO: CreateStudentDto) {
 
