@@ -4,6 +4,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { StudentSchema } from './Schemas/Student.schema';
 import { StudentService } from './services/student/student.service';
 import { StudentController } from './controllers/student/student.controller';
+import { SeedModule } from './seed/seed.module';
 
 @Module({
   imports: [
@@ -12,8 +13,10 @@ import { StudentController } from './controllers/student/student.controller';
       dbName: 'studentsdb',
     }),
     MongooseModule.forFeature([{ name: 'Student', schema: StudentSchema }]),
+    SeedModule,
   ],
   controllers: [StudentController],
   providers: [StudentService],
+  exports: [AppModule],
 })
 export class AppModule {}
